@@ -31,7 +31,7 @@ public class AppointmentDetailsViewModel extends AndroidViewModel {
         Appointment app = (Appointment)propertyChangeEvent.getNewValue();
         patientAppointment.copyChanges(app);
         appointment.postValue(patientAppointment);
-        repository.updateAppointment(patientAppointment);
+        //repository.updateAppointment(patientAppointment);
     }
 
     public LiveData<PatientAppointment> getAppointment() {

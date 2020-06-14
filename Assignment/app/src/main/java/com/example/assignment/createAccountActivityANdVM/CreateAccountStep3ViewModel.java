@@ -25,7 +25,7 @@ public class CreateAccountStep3ViewModel extends AndroidViewModel {
         errorMessage = new MutableLiveData<>();
         repository.addListener("errorPostingUser", this::errorPostingUser);
         repository.addListener("authenticationError", this::errorPostingUser);
-        connectionError = new MutableLiveData<>();
+        connectionError = new MutableLiveData<>(false);
     }
 
     private void errorPostingUser(PropertyChangeEvent propertyChangeEvent) {
@@ -53,7 +53,13 @@ public class CreateAccountStep3ViewModel extends AndroidViewModel {
             errorMessage.postValue(getApplication().getApplicationContext().getResources().getString(R.string.passwordsDontMatch));
             return false;
         }
-        else {
+        else if(password1.length() < 6)
+        {
+            errorMessage.postValue(getApplication().getApplicationContext().getResources().getString(R.string.passwordLongerThan6));
+            return false;
+        }
+        else{
+            errorMessage.postValue("");
             //use the data in DataContainer to create the account
             DataContainer container = DataContainer.getInstance();
             repository.createAccount(container.getPerson().getEmail(), password1);

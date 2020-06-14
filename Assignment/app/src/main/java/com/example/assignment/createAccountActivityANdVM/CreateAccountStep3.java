@@ -38,6 +38,10 @@ public class CreateAccountStep3 extends AppCompatActivity {
             @Override
             public void onChanged(String s) {
                 errorMessage.setText(s);
+                if(s.length() > 0)
+                {
+                    progressBar.setVisibility(View.INVISIBLE);
+                }
             }
         });
 
@@ -57,7 +61,7 @@ public class CreateAccountStep3 extends AppCompatActivity {
                 if(aBoolean)
                 {
                     progressBar.setVisibility(View.INVISIBLE);
-                    Toast.makeText(getApplicationContext(), R.string.connectionError, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.authenticationError, Toast.LENGTH_LONG).show();
                 }
             }
         });

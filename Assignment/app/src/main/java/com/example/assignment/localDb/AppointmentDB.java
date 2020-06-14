@@ -94,4 +94,11 @@ public class AppointmentDB {
     {
         return new AppointmentDB(ap.getAppointmentId(), ap.getCustomerLabel(), ap.getDatetime(), ap.getDoctor().getAddress() + ", " + ap.getDoctor().getCity() + ", " + ap.getDoctor().getCountry(), ap.isCancelled());
     }
+
+    public void copyChanges(Appointment ap)
+    {
+        this.cancelled = ap.isCancelled();
+        this.label = ap.getLabel();
+        this.date = new Date(ap.getDatetime());
+    }
 }

@@ -76,5 +76,6 @@
     <string name="addressText">Address: %s, %s, %s</string>
     <string name="doctorAndClinic">Doctor: %s \\nClinic: %s</string>
     <string name="doctorText">Doctor: %s</string>
-    <string name="connectionError">Connection error</string>
+    <string name="authenticationError">Authentication error</string>
+    <string name="passwordLongerThan6">The password must be longer than 6 digits</string>
 </resources>

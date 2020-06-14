@@ -51,7 +51,9 @@ public class AddDAT extends AppCompatActivity {
     {
         viewModel.undo();
         int i = s.indexOf('\n', s.length()-8);
+        if(i != s.length()-1)
         s = s.substring(0, i+1);
+        else s = "";
         target.setText(s);
     }
 

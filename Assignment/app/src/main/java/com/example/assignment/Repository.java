@@ -163,6 +163,7 @@ public class Repository {
 
     private void putPatientAppointmentOkay(PropertyChangeEvent propertyChangeEvent) {
         Appointment app = (Appointment) propertyChangeEvent.getNewValue();
+        updateAppointment(app);
         pcSupport.firePropertyChange("putPatientAppointmentOkay", null, propertyChangeEvent.getNewValue());
     }
 
@@ -404,14 +405,14 @@ public class Repository {
         api.putAppointment(appointment);
     }
 
-    public void updateAppointment(PatientAppointment patientAppointment) {
+    public void updateAppointment(Appointment patientAppointment) {
         List<AppointmentDB> appointments = activeAppointmentsDB.getValue();
         for (int i = 0; i < appointments.size(); ++i)
         {
             if(appointments.get(i).getId() == patientAppointment.getAppointmentId())
             {
-                appointments.remove(i);
-                appointments.add(AppointmentDB.toAppointmentDb(patientAppointment));
+                appointments.get(i).copyChanges(patientAppointment);
+                break;
             }
         }
         new InsertAppointmentsAsync(appointmentDAO, appointments).execute();

@@ -48,6 +48,11 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
             holder.details.setTextColor(holder.context.getResources().getColor(R.color.cancelled));
             holder.dateTime.setTextColor(holder.context.getResources().getColor(R.color.cancelled));
         }
+        else {
+            holder.label.setTextColor(holder.context.getResources().getColor(R.color.colorPrimary));
+            holder.details.setTextColor(holder.context.getResources().getColor(R.color.colorPrimaryDark));
+            holder.dateTime.setTextColor(holder.context.getResources().getColor(R.color.colorPrimaryDark));
+        }
     }
 
     @Override
